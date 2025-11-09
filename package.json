@@ -10,5 +10,8 @@
   },
   "dependencies": {
     "astro": "^5.15.4"
+  },
+  "devDependencies": {
+    "patch-package": "^8.0.1"
   }
 }

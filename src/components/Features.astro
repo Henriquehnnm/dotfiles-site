@@ -1,0 +1,96 @@
+---
+import { nan } from "astro:schema";
+
+const features = [
+  {
+    name: "Arch Linux",
+    description: "A lightweight and flexible Linux distribution that tries to Keep It Simple.",
+  },
+  {
+    name: "Hyprland",
+    description: "A dynamic tiling Wayland compositor that doesn't sacrifice on its looks.",
+  },
+  {
+    name: "VSCodium",
+    description: "A community-driven, freely-licensed binary distribution of VS Code.",
+  },
+  {
+    name: "Neovim",
+    description: "A hyperextensible Vim-based text editor that's perfect for developers.",
+  },
+  {
+    name: "Waybar",
+    description: "A highly customizable Wayland bar for Sway and Wlroots based compositors.",
+  },
+  {
+    name: "Wofi",
+    description: "A launcher/menu program for wlroots based wayland compositors.",
+  },
+  {
+    name: "Fish",
+    description: "A simple, beautiful, and extremely complete out-of-the-box shell",
+  },
+  {
+    name: "Lazygit",
+    description: "A Git TUI (text user interface) client, extremely efficient, beautiful, and I came like",
+  }
+];
+---
+
+<section id="features">
+  <h3>Features</h3>
+  <div class="features-grid">
+    {features.map(feature => (
+      <div class="card">
+        <h4>{feature.name}</h4>
+        <p>{feature.description}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  section {
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: auto;
+    padding-top: 25px;
+  }
+
+  .card {
+    background-color: var(--rp-overlay);
+    border: 1px solid var(--rp-muted);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: left;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--rp-rose);
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--rp-subtle);
+  }
+</style>

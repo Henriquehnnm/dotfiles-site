@@ -1,0 +1,175 @@
+<header>
+  <nav>
+    <a href="/" class="home">DotFiles</a>
+    <div class="desktop-links">
+      <a href="/#about">About</a>
+      <a href="/#features">Features</a>
+      <a href="/#philosophy">Philosophy</a>
+      <a href="https://github.com/Henriquehnnm/dotfiles" target="_blank"
+        >Contribute</a
+      >
+    </div>
+    <svg
+      id="burger"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </nav>
+  <div id="menu">
+    <a href="/.about">About</a>
+    <a href="/.features">Features</a>
+    <a href="/.philosophy">Philosophy</a>
+    <a href="https://github.com/Henriquehnnm/dotfiles" target="_blank"
+      >Contribute</a
+    >
+  </div>
+</header>
+
+<style>
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--rp-base);
+    border-bottom: 1px solid var(--rp-overlay);
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .home {
+    font-family: "Stack Sans Notch", sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--rp-text);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+
+  .home:hover {
+    color: var(--rp-love);
+  }
+
+  .desktop-links {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .desktop-links {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+
+  .desktop-links a,
+  #menu a {
+    font-family: "Stack Sans Text", sans-serif;
+    color: var(--rp-subtle);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .desktop-links a:hover,
+  #menu a:hover {
+    color: var(--rp-gold);
+  }
+
+  #burger {
+    cursor: pointer;
+    color: var(--rp-text);
+    display: block;
+    border-radius: 8px;
+    padding: 4px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #burger:hover {
+    color: var(--rp-gold);
+    background-color: var(--rp-highlight-low);
+  }
+
+  @media (min-width: 768px) {
+    #burger {
+      display: none;
+    }
+  }
+
+  #menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 2rem;
+    background-color: var(--rp-surface);
+    border: 1px solid var(--rp-overlay);
+    border-radius: 12px;
+    padding: 0.5rem;
+    box-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    z-index: 20;
+  }
+
+  #menu a {
+    display: block;
+    white-space: nowrap;
+  }
+</style>
+
+<script>
+  const burger = document.querySelector("#burger");
+  const menu = document.querySelector("#menu");
+
+  burger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isVisible = menu.style.display === "block";
+    menu.style.display = isVisible ? "none" : "block";
+  });
+
+  document.addEventListener("click", (e) => {
+    if (
+      menu.style.display === "block" &&
+      !menu.contains(e.target) &&
+      e.target !== burger
+    ) {
+      menu.style.display = "none";
+    }
+  });
+
+  const handleInteraction = () => {
+    if (menu.style.display === "block") {
+      menu.style.display = "none";
+    }
+  };
+
+  window.addEventListener("scroll", handleInteraction);
+
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", handleInteraction);
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) {
+      handleInteraction();
+    }
+  });
+</script>
